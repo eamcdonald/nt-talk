@@ -11,17 +11,17 @@
 \author{Edward McDonald} 
 \institute{UNSW}
 
-
-\AtBeginSection[]{
-  \begin{frame}
-  \vfill
-  \centering
-  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
-    \usebeamerfont{title}\insertsectionhead\par%
-  \end{beamercolorbox}
-  \vfill
-  \end{frame}
-}
+% 
+% \AtBeginSection[]{
+%   \begin{frame}
+%   \vfill
+%   \centering
+%   \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%     \usebeamerfont{title}\insertsectionhead\par%
+%   \end{beamercolorbox}
+%   \vfill
+%   \end{frame}
+% }
  % Do not include the preceding set of commands if you prefer not to have a recurring outline displayed during your presentation.
 
 % Core sets
@@ -55,7 +55,7 @@
 \newtheorem{remark}{Remark}
 
 \begin{document}
-
+\section{The Conformal trace theorem}
 \begin{frame} 
 \titlepage
 \end{frame}
@@ -67,25 +67,16 @@
 \end{frame}
 
 \begin{frame}\frametitle{What this talk is about}
-    Part I will cover:
-    \begin{enumerate}
-        \item{} A brief introduction to complex polynomial dynamics and Julia sets
-        \item{} Geometric measure theory (specifically, Hausdorff meausures)
-%         \item{} Overview of singular traces.
-    \end{enumerate}
-    
-    Part II will cover:
-    \begin{enumerate}
-%         \item{} Harmonic analysis on the circle and Riesz commutators
-        \item{} Statement of the conformal trace theorem, and an outline the proof
-        \item{} Prospects for future work.
-    \end{enumerate}
+    The conformal trace theorem:
+    \begin{equation*}
+        \varphi(f(M_Z)|\qd Z|^p) = c_{\varphi,J}\int_J f\,d\lambda_p.
+    \end{equation*}
 \end{frame}
 
 \begin{frame}\frametitle{Historical background: What is the conformal trace theorem?}
     Let $c \in \Cplx$ be small, and let $f_c(z) = z^2+c$. The Julia set $J$ of $f_c$ is the boundary of the set of points $z$ such that $\{f_c^n(z)\}_{n\geq 0}$ is bounded.\\
     When $c \approx 0$, $J$ is a Jordan curve:\\
-    \includegraphics[width=90mm]{img/julia-07001-filled.png}\\
+    \includegraphics[width=60mm]{img/julia-07001-filled.png}\\
     If $c \neq 0$ then this is non-smooth and a kind of fractal.
 \end{frame}
 
@@ -119,21 +110,21 @@
     In our paper we provided a new proof, using operator integration techniques which did not exist in 1994.
 \end{frame}
 
-\begin{frame}\frametitle{Background (end)}
-    The most technically challenging part of the proof is the so-called ``quantised change of variables formula":
-    \begin{equation*}
-        |[F,M_{f\circ Z}]|^p-|f'(M_Z)|^p|[F,M_Z]|^p \in \SepPart{1}.
-    \end{equation*}
-    Where $Z \in C(\Circ)$, and $f$ is a polynomial.
-    It is quite easy to show that:
-    \begin{equation*}
-        [F,M_{f\circ Z}]-f'(M_Z)[F,M_Z] \in \SepPart{p}
-    \end{equation*}
-    but ``taking a power $p$" is highly nontrivial.
-\end{frame}
+% \begin{frame}\frametitle{Background (end)}
+%     The most technically challenging part of the proof is the so-called ``quantised change of variables formula":
+%     \begin{equation*}
+%         |[F,M_{f\circ Z}]|^p-|f'(M_Z)|^p|[F,M_Z]|^p \in \SepPart{1}.
+%     \end{equation*}
+%     Where $Z \in C(\Circ)$, and $f$ is a polynomial.
+%     It is quite easy to show that:
+%     \begin{equation*}
+%         [F,M_{f\circ Z}]-f'(M_Z)[F,M_Z] \in \SepPart{p}
+%     \end{equation*}
+%     but ``taking a power $p$" is highly nontrivial.
+% \end{frame}
 
 
-\section{Part I: Basic conformal dynamics}
+% \section{Part I: Basic conformal dynamics}
 
 \subsection{Julia sets}
 % \begin{frame}\frametitle{Context: Dynamical systems}
@@ -261,6 +252,7 @@
     \begin{theorem}[Mandelbrot]
         The Julia set $J(f_c)$ is connected if and only if $c \in M$ (the Mandelbrot set).
     \end{theorem}
+    (some authors take this as the definition of $M$)
 \end{frame}
 
 \begin{frame}\frametitle{Fixed points}
@@ -272,16 +264,16 @@
         \item{} Repelling if $|f'(\lambda)| > 1$,
         \item{} Neutral if $|f'(\lambda)| = 1$.
     \end{enumerate}
-    An attracting fixed point $\lambda$ can be called \emph{super-attracting} if $f'(\lambda) = 0$.
+    An attracting fixed point $\lambda$ are called \emph{super-attracting} if $f'(\lambda) = 0$.
 \end{frame}
 
 \begin{frame}\frametitle{Fixed points (cont.)}
     The behaviour of $\{f^n(z)\}_{n\geq 0}$ near an attracting fixed point is easily described:
     
     
-        If $z$ is sufficiently close to an attracting fixed point $\lambda$, then $f^n(z)\to \lambda$ exponentially fast.
-        
-        If $\lambda$ is superattracting, then $f^n(z)\to \lambda$ super-exponentially fast.
+    If $z$ is sufficiently close to an attracting fixed point $\lambda$, then $f^n(z)\to \lambda$ exponentially fast.
+    
+    If $\lambda$ is superattracting, then $f^n(z)\to \lambda$ super-exponentially fast.
         
         
     The set of all $z$ such that $f^n(z)\to  \lambda$ as $n\to\infty$ is called the attracting basin of $\lambda$.
@@ -295,7 +287,7 @@
     Let $M_0$ be the set $\{\frac{z}{2}(1-\frac{z}{2})\;:\;|z|<1\}$. $M_0$ is 
     an open subset of the Mandelbrot set $M$ called the \emph{main cardioid}, shown below in red:
     \begin{center}
-        \includegraphics[width=70mm]{img/main-cardioid.png}
+        \includegraphics[width=60mm]{img/main-cardioid.png}
     \end{center}
     By definition, if $c \in M_0$ then $f_c$ has an attracting fixed point.
 \end{frame}
@@ -322,7 +314,7 @@
 \begin{frame}\frametitle{Hausdorff dimension (reminder)}
     Let $(X,d)$ be a metric space. For $q > 0$, let the $q$-dimensional Hausdorff content of $X$ be:
     \begin{equation*}
-        C_q(X) = \inf\{\sum_{j=0}^\infty r_j^q\;:\;X \subseteq \bigcup_{j =0}^\infty B(x_j,r_j)\}.
+        C_q(X) = \inf\{\sum_{j=0}^\infty \mathrm{diam}(U_j)^q\;:\;X \subseteq \bigcup_{j =0}^\infty U_j\}.
     \end{equation*}
     
     The Hausdorff dimension of $X$ is defined to be the infimum of the set of $q$ such that $C_q(X) = 0$.
@@ -340,20 +332,20 @@
     with Hausdorff dimension $p \in [1,2)$. In fact $p = 1$ if and only if $c = 0$.
 \end{frame}
 
-\begin{frame}\frametitle{Minkowski content}
-    A close relative of Hausdorff dimension is Minkowski dimension.
-    Let $X \subseteq \Rl^d$. If $\delta > 0$, let $S_\delta(X) = \bigcup_{x \in X} B(x,\delta)$, or equivalently:
-    \begin{equation*}
-        S_\delta(X) = \{z \in \Rl^d\;:\;\mathrm{dist}(z,X) < \delta\}.
-    \end{equation*}
-    
-    If there is some $p > 0$ such that:
-    \begin{equation*}
-        c\delta^{d-p} \leq |S_\delta(X)| \leq C\delta^{d-p}
-    \end{equation*}
-    for all $\delta > 0$, then $X$ is said to have Minkowski dimension $p$. If $0 < c < C < \infty$, then $X$
-    is said to have finite upper and positive lower $p$-dimensional Minkowski content.
-\end{frame}
+% \begin{frame}\frametitle{Minkowski content}
+%     A close relative of Hausdorff dimension is Minkowski dimension.
+%     Let $X \subseteq \Rl^d$. If $\delta > 0$, let $S_\delta(X) = \bigcup_{x \in X} B(x,\delta)$, or equivalently:
+%     \begin{equation*}
+%         S_\delta(X) = \{z \in \Rl^d\;:\;\mathrm{dist}(z,X) < \delta\}.
+%     \end{equation*}
+%     
+%     If there is some $p > 0$ such that:
+%     \begin{equation*}
+%         c\delta^{d-p} \leq |S_\delta(X)| \leq C\delta^{d-p}
+%     \end{equation*}
+%     for all $\delta > 0$, then $X$ is said to have Minkowski dimension $p$. If $0 < c < C < \infty$, then $X$
+%     is said to have finite upper and positive lower $p$-dimensional Minkowski content.
+% \end{frame}
 
 \begin{frame}\frametitle{Conformal dimension}
     Another closely related notion of dimension is conformal dimension (due to Sullivan).
@@ -380,11 +372,9 @@
 \end{frame}
 
 \begin{frame}\frametitle{Characterising the Hausdorff measure}
-    Fact: For Julia sets $J(f_c)$, $c \in M_0$, we have:\\
-    Hausdorff dimension $=$ Minkowski dimension\\
-    and the Hausdorff measure is the unique $f_c$-conformal measure of dimension equal to $p$, where $p$ is the Hausdorff dimension.
+    Fact: For Julia sets $J(f_c)$, $c \in M_0$, the Hausdorff measure is the unique $f_c$-conformal measure of dimension equal to $p$, where $p$ is the Hausdorff dimension.
     
-    Using the Riesz theorem, we can characterise the Hausdorff measure as follows:
+    We can therefore characterise the Hausdorff measure as follows:
     \begin{theorem}
         The Hausdorff measure $\lambda_p$ of $J(f_c)$ is the unique positive Borel measure such that for all open sets $U\subseteq J(f_c)$ with $f_c|U$ injective,
         and continuous functions $g$ supported in $U$, we have:
@@ -394,33 +384,108 @@
     \end{theorem}
 \end{frame}
 
-
-\begin{frame}\frametitle{Characterising the Hausdorff measure (cont.)}
-    Since $f_c(z) = z^2+c$ we have:
-    \begin{equation*}
-        f_c^{-1}(f_c(U)) = U\cup -U.
-    \end{equation*}
-    
-    We can moreover say the following:
-    \begin{theorem}
-        The Hausdorff measure $\lambda_p$ is the unique (up to a constant scalar factor) positive Borel measure such that for all continuous functions $g$ on $J(f_c)$,
-        \begin{equation*}
-            \int_{J(f_c)} g\,d\lambda_p = \frac{1}{2}\int_{J(f_c)} (g\circ f_c)|f_c'|^p\,d\lambda_p.
-        \end{equation*}
-    \end{theorem}
-    When we prove the conformal trace theorem, we use the above characterisation of the Hausdorff measure.
-\end{frame}
-
-
-
-\section{Part II: The Conformal trace theorem}
+% 
+% \begin{frame}\frametitle{Characterising the Hausdorff measure (cont.)}
+%     Since $f_c(z) = z^2+c$ we have:
+%     \begin{equation*}
+%         f_c^{-1}(f_c(U)) = U\cup -U.
+%     \end{equation*}
+%     
+%     We can moreover say the following:
+%     \begin{theorem}
+%         The Hausdorff measure $\lambda_p$ is the unique (up to a constant scalar factor) positive Borel measure such that for all continuous functions $g$ on $J(f_c)$,
+%         \begin{equation*}
+%             \int_{J(f_c)} g\,d\lambda_p = \frac{1}{2}\int_{J(f_c)} (g\circ f_c)|f_c'|^p\,d\lambda_p.
+%         \end{equation*}
+%     \end{theorem}
+%     When we prove the conformal trace theorem, we use the above characterisation of the Hausdorff measure.
+% \end{frame}
 
 \begin{frame}\frametitle{The main task of the paper}
-    Let $g:J(f_c) \to\Cplx$ be a continuous function. In his 1994 book \emph{Noncommutative geometry}, Alain Connes 
-    announced a formula for $\int_J g\,d\lambda_p$ given in terms of his ``quantised calculus". We have now completed the proof
-    of this formula.
+    By the Riesz representation theorem, we have the following:
+    \begin{theorem}
+        Let $\ell$ be a bounded linear functional on the space $C(J)$. If:
+        \begin{equation*}
+            \ell(g) = \ell((g\circ f_c)|f_c'|^p),\quad g \in C(J).
+        \end{equation*}
+        then there is a constant $c$ such that:
+        \begin{equation*}
+            \ell(g) = c\int_{J} g\,d\lambda_p.
+        \end{equation*}
+    \end{theorem}
 \end{frame}
 
+
+\begin{frame}\frametitle{The Hilbert transform}
+    Let $\Circ$ be the unit circle (in the complex plane). The Hilbert space $L_2(\Circ)$ is
+    defined with respect to the arc-length measure (the Haar measure).
+    
+    There is the trigonometric orthonormal basis for $L_2(\Circ)$,
+    \begin{equation*}
+        e_n(z) = z^n,\quad n\in \Itgr, z \in \Circ.
+    \end{equation*}
+    The Hilbert trasform $F$ is defined on the basis $e_n$ by $Fe_n = \sgn(n)e_n$.
+    
+    For a bounded function $f$ on $\Circ$, let $M_f$ be the operator $M_f\xi(z) = f(z)\xi(z)$ (pointwise multiplication).
+\end{frame}
+
+\begin{frame}\frametitle{Quantised differentials}
+    If $f$ is a bounded function on $\Circ$, then pointwise multiplication
+    by $f$ defines a bounded linear operator $M_f$ on $L_2(\Circ)$. 
+    Connes calls the commutator $i[F,M_f]$ the ``quantised differential" of $f$.
+    
+    The name is intended to imply that this is something like a differential $df$. So we use the symbol $\qd f$,
+    \begin{equation*}
+        \qd f := i[F,M_f].
+    \end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{B\"ottcher coordinates}
+    
+    The following is due to L. B\"ottcher:
+    \begin{theorem}
+        Let $f$ be a polynomial of degree $d \geq 2$. There exists a conformal map $Z$:
+        \begin{equation*}
+            Z:\{|z| > 1\}\to \text{Attracting basin of }\infty.
+        \end{equation*}
+        such that $f(Z(z)) = Z(z^d)$, for all $|z| > 1$.
+    \end{theorem}
+    If $J(f_c)$ is a Jordan curve, then Carath\'eodory's theorem implies that $Z$ has continuous extension:
+    \begin{equation*}
+        Z:\Circ\to J(f_c)
+    \end{equation*}
+    such that $Z(z^2) = f_c(Z(z))$ for all $z \in \Circ$.
+\end{frame}
+
+\begin{frame}\frametitle{Description of the Conformal Trace Formula}
+     Let $f$ be a continuous function on the Julia set $J(f_c)$. Then the operator
+     \begin{equation*}
+        M_{f\circ Z}|\qd Z|^p = M_{f\circ Z}|[F,M_Z]|^p
+     \end{equation*}
+     is some kind of ``$p$-dimensional density" on the Julia set $J(f_c)$ (in the language of quantised calculus).
+     
+     Motivated by noncommutative geometry, one might guess that the correct way of ``integrating" this density is to take a trace.
+\end{frame}
+
+\begin{frame}\frametitle{Description of the Conformal Trace Formula}
+    \begin{lemma}
+        The quantised differential $\qd Z$ (i.e., the commutator $[F,M_Z]$) is in the ideal $\Lc_{p,\infty}$.
+    \end{lemma}
+    Hence, the operator $M_{f\circ Z}|\qd Z|^p$ is in $\Lc_{1,\infty}$.
+\end{frame}
+
+\begin{frame}\frametitle{Outline of the proof}
+    Let $\varphi$ be a continuous normalised trace on $\Lc_{1,\infty}$. Define the linear functional:
+    \begin{equation*}
+        \ell(g) = \varphi(g(M_Z)|\qd Z|^p).
+    \end{equation*}
+    Then if we can show that:
+    \begin{itemize}
+        \item{} $\ell(1) \neq 0$ for at least some trace $\varphi$,
+        \item{} $\ell(g) = \frac{1}{2}\ell((g\circ f_c)|f_c'|^p)$.
+    \end{itemize}
+    The proof would be complete complete.
+\end{frame}
 
 % \begin{frame}\frametitle{Quantised Calculus: A very rapid introduction}
 %     Let $H$ be a (complex, separable) Hilbert space. Let $\mathcal{B}(H)$ denote the algebra
@@ -466,311 +531,311 @@
 %         \item{} All traces vanish on finite rank operators (They are \emph{singular}). 
 %     \end{enumerate} 
 % \end{frame}
-
-\begin{frame}\frametitle{The Hilbert transform}
-    Let $\Circ$ be the unit circle (in the complex plane). The Hilbert space $L_2(\Circ)$ is
-    defined with respect to the arc-length measure (the Haar measure).
-    
-    There is the trigonometric orthonormal basis for $L_2(\Circ)$,
-    \begin{equation*}
-        e_n(z) = z^n,\quad n\in \Itgr, z \in \Circ.
-    \end{equation*}
-    The Hilbert trasform $F$ is defined on the basis $e_n$ by $Fe_n = \sgn(n)e_n$.
-\end{frame}
-
-\begin{frame}\frametitle{Quantised differentials}
-    If $f$ is a bounded function on $\Circ$, then pointwise multiplication
-    by $f$ defines a bounded linear operator $M_f$ on $L_2(\Circ)$. 
-    Connes calls the commutator $i[F,M_f]$ the ``quantised differential" of $f$.
-    
-    The name is intended to imply that this is something like a differential $df$. So we use the symbol $\qd f$,
-    \begin{equation*}
-        \qd f := i[F,M_f].
-    \end{equation*}
-\end{frame}
-
-\begin{frame}\frametitle{B\"ottcher coordinates}
-    
-    The following is due to L. B\"ottcher:
-    \begin{theorem}
-        Let $f$ be a polynomial of degree $d \geq 2$. There exists a conformal map $Z$:
-        \begin{equation*}
-            Z:\{|z| > 1\}\to \text{Attracting basin of }\infty.
-        \end{equation*}
-        such that $f(Z(z)) = Z(z^d)$, for all $|z| > 1$.
-    \end{theorem}
-    If $J(f_c)$ is a Jordan curve, then Carath\'eodory's theorem implies that $Z$ has continuous extension:
-    \begin{equation*}
-        Z:\Circ\to J(f_c)
-    \end{equation*}
-    such that $Z(z^2) = f_c(Z(z))$ for all $z \in \Circ$.
-%       Let $c \in M_0$ (the main cardioid of the mandlebrot set), and let $c \neq 0$ so that $J(f_c)$ is a Jordan curve with Hausdorff dimension $1 < p < 2$. Since $J$ is a Jordan curve,
-%       there is a conformal mapping $Z$ from the exterior of the unit disc to the exterior of $J(f_c)$,
-%       \begin{center}
-%           \includegraphics[width=60mm]{img/riemann-mapping.png}
-%       \end{center}
-%       There is a theorem of complex analysis (Carath\`eodory's theorem) which implies that $Z$ extends to a continuous function on the unit circle $\Circ := \{z \in \Cplx\;:\;|z|=1\}$
-%       to $J(f_c)$. We can choose $Z$ so that it satisfies the functional equation
-%       \begin{equation*}
-%         Z(z)^2+c = Z(z^2),\quad z \in \Circ.
-%       \end{equation*}
-\end{frame}
-
-\begin{frame}\frametitle{Description of the Conformal Trace Formula}
-     Let $f$ be a continuous function on the Julia set $J(f_c)$. Then the operator
-     \begin{equation*}
-        M_{f\circ Z}|\qd Z|^p = M_{f\circ Z}|[F,M_Z]|^p
-     \end{equation*}
-     is some kind of ``$p$-dimensional density" on the Julia set $J(f_c)$ (in the language of quantised calculus).
-     
-     Motivated by noncommutative geometry, one might guess that the correct way of ``integrating" this density is to take a trace.
-\end{frame}
-
-\begin{frame}\frametitle{Description of the Conformal Trace Formula}
-    \begin{lemma}
-        The quantised differential $\qd Z$ (i.e., the commutator $[F,M_Z]$) is in the ideal $\Lc_{p,\infty}$.
-    \end{lemma}
-    Hence, the operator $M_{f\circ Z}|\qd Z|^p$ is in $\Lc_{1,\infty}$.
-\end{frame}
-
-\begin{frame}\frametitle{Description of the Conformal Trace Formula}
-    \begin{theorem}
-        Let $\varphi$ be a continous trace on $\Lc_{1,\infty}$. Then there is a constant $K(\varphi,c)$ such
-        that for all $f \in C(J(f_c))$,
-        \begin{equation*}
-            \varphi(M_{f\circ Z}|\qd Z|^p) = K(\varphi,c)\int_{J(f_c)} f\,d\lambda_p
-        \end{equation*}
-        where $\lambda_p$ is the $p$-dimensional Hausdorff measure on $J(f_c)$.
-        Also, there exist traces $\varphi$ such that $K(\varphi,c) > 0$.
-    \end{theorem}
-\end{frame}
-
-\begin{frame}\frametitle{Equivalent statement of the Conformal trace theorem}
-    Recall that the Hausdorff measure can be characterised as the unique $f_c$-conformal measure of dimension $p$. 
-    
-    Let $\ell_{\varphi}$ be the linear functional:
-    \begin{equation*}
-        \ell_{\varphi}(g) = \varphi(M_{g\circ Z}|\qd Z|^p).
-    \end{equation*}
-    By the Riesz theorem, there is some measure $\nu$ such that $\ell_\varphi$ is integration against $\nu$.
-    It therefore suffices to show the following:
-    \begin{enumerate}
-        \item{} For all continuous $g:J(f_c)\to \Cplx$, we have:
-            \begin{equation*}
-                \ell_{\varphi}(g) = \frac{1}{2}\ell_\varphi((g\circ f_c)|f_c'|^p).
-            \end{equation*}
-        \item{} $\ell_{\varphi} > 0$, for at least some $\varphi$.
-    \end{enumerate}
-\end{frame}
-
-\subsection{Non-trivality}
-
-\begin{frame}\frametitle{Non-triviality (cont.)}
-    First, we can show the ``non-triviality" component.
-    \begin{theorem}
-        Let $\mathcal{C}$ be a Jordan curve with finite upper and positive lower $p$-Minkowski content, and let $\zeta:\Circ\to \mathcal{C}$ be the continuous extension of a conformal equivalence of the open unit disk
-        and the interior of $\mathcal{C}$. Then $\qd \zeta \in \Lc_{p,\infty}$, and for all dilation invariant extended limits $\omega$ such that $\omega\circ \log$ is still dilation invariant, we have:
-        \begin{equation*}
-            \tr_\omega(|\qd \zeta|^p) > 0.
-        \end{equation*}
-    \end{theorem}
-\end{frame}
-
-\begin{frame}\frametitle{Non-triviality (cont.)}
-    Idea of the proof:    
-    If $\omega$ satisfies the stated conditions, then:
-    \begin{equation*}
-        \tr_\omega(|\qd \zeta|^p) = (\omega\circ \log)\left(t\mapsto \frac{1}{t}\tr(|\qd \zeta|^{p(1+1/t)})\right)
-    \end{equation*}
-    So it suffices to show that:
-    \begin{equation*}
-        \liminf_{s\to 0} s\cdot \tr(|\qd \zeta|^{p+s}) > 0.
-    \end{equation*}
-%     Which can be achieved with the integral formula:
-
-\end{frame}
-
-\begin{frame}\frametitle{Non-triviality (cont.)}
-    A theorem of Peller gives us the equivalence:
-    \begin{equation*}
-        \tr(|\qd \zeta|^{p+s}) \approx \int_{\mathbb{D}} |\zeta'(z)|^{p+s}(1-|z|^2)^{p+s-2}\,dzd\overline{z}.
-    \end{equation*}
-    According to the Koebe $1/4$-theorem,
-    \begin{equation*}
-        \dist(\zeta(0),\mathcal{C}) \leq |\zeta'(0)| \leq 4\dist(\zeta(0),\mathcal{C})
-    \end{equation*}
-    A change of coordinates yields:
-    \begin{equation*}
-        \frac{1}{4}(1-|z|^2)|\zeta'(z)| \leq \dist(\zeta(z),\mathcal{C}) \leq (1-|z|^2)|\zeta'(z)|
-    \end{equation*}
-    for all $z \in \Disc$.    
-\end{frame}
-
-\begin{frame}\frametitle{Non-triviality (cont.)}
-    In summary:
-     \begin{equation*}
-         \tr(|\qd \xi|^{p+s}) \approx \int_{\mathrm{int}\mathcal{C}} \mathrm{dist}(z,\mathcal{C})^{p+s-2}\,dzd\overline{z}.
-     \end{equation*}
-    The question is now reduced to a purely geometric problem concerning $\mathcal{C}$.
-\end{frame}
-
-\begin{frame}\frametitle{Non-triviality (cont.)}
-    Split up $\mathrm{int}\mathcal{C}$ into regions:
-    \begin{equation*}
-        A_k = \{z \in \mathrm{int}\mathcal{C}\;:\; \dist(z,\mathcal{C}) \in [\lambda^{-k-1},\lambda^{-k})\}.
-    \end{equation*}
-    Then,
-    \begin{equation*}
-        \int_{\mathrm{int}(\mathcal{C}} \mathrm{dist}(z,\mathcal{C})^{p+s-2} \,dzd\overline{z} \geq \sum_{k\geq 0} \lambda^{-k(p+s-2)}|A_k|.
-    \end{equation*}
-    with $|A_k| = |S_{\lambda^{1-k}}(\mathcal{C})\cap \mathrm{int}(\mathcal{C})|-|S_{\lambda^{-k}}(\mathcal{C})\cap \mathrm{int}(\mathcal{C})| \geq B\lambda^{-k(2-p)}$
-    for sufficiently big $\lambda$.
-    
-    This gives,
-    \begin{equation*}
-        \liminf_{s\to 0} s\cdot \tr(|\qd \zeta|^{p+s}) > 0.
-    \end{equation*}
-\end{frame}
-
-
-\subsection{Proving conformality}
-\begin{frame}\frametitle{Proving conformality}
-    The remaining task is to show that:
-    \begin{equation*}
-        \ell_{\varphi}(g) = \frac{1}{2}\ell_{\varphi}((g\circ f_c)|f_c'|^p).
-    \end{equation*}
-
-    Recall that we have the B\"ottcher equation:
-    \begin{equation*}
-        Z(z^2) = f_c(Z(z)).
-    \end{equation*} 
-    Let $U$ be the partial isometry on $L_2(\Circ)$ given by $U(z^n) = z^{2n}$. Then,
-    \begin{equation*}
-        UM_ZU^* = M_{f_c\circ Z}.
-    \end{equation*}
-    we also have $U^*U = 1$ and $UU^* = P$ is the projection $P(z^n) = z^n$ if $n$ is even and $0$ if $n$ is odd.
-    
-    It is important that $U$ commutes with the Hilbert transform $F$.
-\end{frame}
-
-\begin{frame}\frametitle{Proving conformality (cont.)}
-    Then,
-    \begin{align*}
-        \varphi(M_{g\circ Z}|\qd Z|^p) &= \varphi(U^*UM_{g\circ Z}|\qd Z|^p)\\
-                                       &= \varphi(M_{g\circ f_c\circ Z}U|[F,M_{Z}]|^pU^*)\\
-                                       &= \varphi(M_{g\circ Z}|[F,M_{f_c\circ Z}]|^pUU^*)\\
-                                       &= \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^pP).
-    \end{align*}
-    A further argument using unitary invariance shows that:
-    \begin{align*}
-        \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^pP) = \frac{1}{2}\varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^p)
-    \end{align*}
-\end{frame}
-
-
-\begin{frame}\label{The quantised chain rule}
-    The following is called by Connes a ``quantised chain rule". Let $f$ be a polynomial. Then:
-    \begin{equation*}
-        |\qd (f\circ Z)|^p-|f'(M_Z)|^p|\qd Z|^p \in \SepPart{1}.
-    \end{equation*}
-    Proving the above identity is the most technically challenging part of the proof, requiring the operator integration tricks developed in the preceding talk.
-\end{frame}
-
-\begin{frame}\frametitle{The quantised chain rule (cont.)}
-    We have,
-    \begin{equation*}
-        [M_f,[F,M_Z]] = [[M_f,F],M_Z]
-    \end{equation*}
-    Since $f$ is a polynomial, the commutator $[M_f,F]$ is finite rank.
-    
-    Thus, we have:
-    \begin{equation*}
-        M_{z^n}[F,M_Z]M_{z^{-n}}-[F,M_Z] \in \SepPart{p}. 
-    \end{equation*}
-    This (highly nontrivally) implies that:
-    \begin{equation*}
-         |M_{z^n}[F,M_Z]M_{z^{-n}}|^p-|[F,M_Z]|^p \in \SepPart{1}.
-    \end{equation*}
-    Since $M_{z^n}$ is unitary, we get:
-    \begin{equation*}
-        [M_{z^n},|[F,M_Z]|^p] \in \SepPart{1}.
-    \end{equation*}
-\end{frame}
-
-\begin{frame}\frametitle{The quantised chain rule (cont.)}
-    Hence for all polynomials $f$,
-    \begin{equation*}
-        [M_f,|\qd Z|^p] \in \SepPart{1}.
-    \end{equation*}
-    An approximation argument allows us to state the above for all continuous $f$ as well.
-    
-    Fact: we also have $[M_f,|\qd Z|] \in \SepPart{p}$.
-    
-    Since $[M_{Z}^n,[F,M_Z]] \in \SepPart{p}$, we have that:
-    \begin{equation*}
-        [F,M_{Z}^n] \in nM_Z^{n-1}[F,M_Z]+\SepPart{p}.
-    \end{equation*}
-\end{frame}
-
-\begin{frame}\frametitle{The quantised chain rule (cont.)}
-    By linearity,
-    \begin{equation*}
-        [F,f(M_Z)] - f'(M_Z)[F,M_Z] \in \SepPart{p}.
-    \end{equation*}
-    So,
-    \begin{equation*}
-        |[F,f(M_Z)]|^p - |f'(M_Z)[F,M_Z]|^p \in \SepPart{1}.
-    \end{equation*}
-    Using the identity $|AB| = ||A|B|$, and $[M_{|f'\circ Z|^{1/2}},|[F,M_Z]|] \in \SepPart{p}$ we have
-    \begin{equation*}
-        |\qd f\circ Z|^p - (|f'(M_Z)|^{1/2}|\qd Z||f'(M_Z)|^{1/2})^p \in \SepPart{1}.
-    \end{equation*}
-\end{frame}
-
-\begin{frame}\frametitle{The quantised chain rule (cont.)}
-    Using the advanced operator integration techniques from the preceding talk:
-    \begin{equation*}
-        |f'(M_Z)|^p|\qd Z|^p- (|f'(M_Z)|^{1/2}|\qd Z||f'(M_Z)|^{1/2})^p \in \SepPart{1}.
-    \end{equation*}
-    This finally gives us the quantised chain rule:
-    \begin{equation*}
-        |\qd (f\circ Z)|^p - |f'(M_Z)|^p|\qd Z|^p \in \SepPart{1}.
-    \end{equation*}
-\end{frame}
-
-\begin{frame}\label{The end of the proof}
-    The quantised chain rule gives us:
-    \begin{equation*}
-        \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^p) = \varphi(M_{g\circ f_c\circ Z}|f_c'(M_Z)|^p|\qd Z|^p).
-    \end{equation*}
-    Which is exactly what we needed.
-\end{frame}
-
-\subsection{Further directions}
-\begin{frame}\frametitle{Further directions}
-    \begin{itemize}
-        \item{} What is the dependence of $K(\varphi,c)$ on $\varphi$?
-        \item{} Can a similar result be stated for Julia set of more general polynomials (or even non-polynomials)?
-        \item{} Can we provide a similar result for Hausdorff measures on other Jordan curves in the plane? (such as a Koch snowflake)
-    \end{itemize}
-    At present, very little is known.
-\end{frame}
-
-\subsection{The end.}
-\begin{frame}
-    Thank you for listening!
+% 
+% \begin{frame}\frametitle{The Hilbert transform}
+%     Let $\Circ$ be the unit circle (in the complex plane). The Hilbert space $L_2(\Circ)$ is
+%     defined with respect to the arc-length measure (the Haar measure).
 %     
-%     More information on operator ideals and their traces can be found in:\\
-%     Lord, Steven; Sukochev, Fedor; Zanin, Dmitriy {\bf Singular traces}. Theory and applications. De Gruyter Studies in Mathematics, 46. {\emph De Gruyter, Berlin}, 2013.\\
+%     There is the trigonometric orthonormal basis for $L_2(\Circ)$,
+%     \begin{equation*}
+%         e_n(z) = z^n,\quad n\in \Itgr, z \in \Circ.
+%     \end{equation*}
+%     The Hilbert trasform $F$ is defined on the basis $e_n$ by $Fe_n = \sgn(n)e_n$.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Quantised differentials}
+%     If $f$ is a bounded function on $\Circ$, then pointwise multiplication
+%     by $f$ defines a bounded linear operator $M_f$ on $L_2(\Circ)$. 
+%     Connes calls the commutator $i[F,M_f]$ the ``quantised differential" of $f$.
 %     
-    Further reading:\\
-    Good references for Julia sets and conformal dynamics are,\\
-    Carleson and Gamelin, \emph{ Complex Dynamics}, 1993\\
-    Milnor, \emph{Dynamics in One Complex variable}, 2006.\\
-    
-    More information on the quantised calculus may be found in:\\
-    Connes, \emph{Noncommutative geometry}, 1994.
-\end{frame}
+%     The name is intended to imply that this is something like a differential $df$. So we use the symbol $\qd f$,
+%     \begin{equation*}
+%         \qd f := i[F,M_f].
+%     \end{equation*}
+% \end{frame}
+
+% \begin{frame}\frametitle{B\"ottcher coordinates}
+%     
+%     The following is due to L. B\"ottcher:
+%     \begin{theorem}
+%         Let $f$ be a polynomial of degree $d \geq 2$. There exists a conformal map $Z$:
+%         \begin{equation*}
+%             Z:\{|z| > 1\}\to \text{Attracting basin of }\infty.
+%         \end{equation*}
+%         such that $f(Z(z)) = Z(z^d)$, for all $|z| > 1$.
+%     \end{theorem}
+%     If $J(f_c)$ is a Jordan curve, then Carath\'eodory's theorem implies that $Z$ has continuous extension:
+%     \begin{equation*}
+%         Z:\Circ\to J(f_c)
+%     \end{equation*}
+%     such that $Z(z^2) = f_c(Z(z))$ for all $z \in \Circ$.
+% %       Let $c \in M_0$ (the main cardioid of the mandlebrot set), and let $c \neq 0$ so that $J(f_c)$ is a Jordan curve with Hausdorff dimension $1 < p < 2$. Since $J$ is a Jordan curve,
+% %       there is a conformal mapping $Z$ from the exterior of the unit disc to the exterior of $J(f_c)$,
+% %       \begin{center}
+% %           \includegraphics[width=60mm]{img/riemann-mapping.png}
+% %       \end{center}
+% %       There is a theorem of complex analysis (Carath\`eodory's theorem) which implies that $Z$ extends to a continuous function on the unit circle $\Circ := \{z \in \Cplx\;:\;|z|=1\}$
+% %       to $J(f_c)$. We can choose $Z$ so that it satisfies the functional equation
+% %       \begin{equation*}
+% %         Z(z)^2+c = Z(z^2),\quad z \in \Circ.
+% %       \end{equation*}
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Description of the Conformal Trace Formula}
+%      Let $f$ be a continuous function on the Julia set $J(f_c)$. Then the operator
+%      \begin{equation*}
+%         M_{f\circ Z}|\qd Z|^p = M_{f\circ Z}|[F,M_Z]|^p
+%      \end{equation*}
+%      is some kind of ``$p$-dimensional density" on the Julia set $J(f_c)$ (in the language of quantised calculus).
+%      
+%      Motivated by noncommutative geometry, one might guess that the correct way of ``integrating" this density is to take a trace.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Description of the Conformal Trace Formula}
+%     \begin{lemma}
+%         The quantised differential $\qd Z$ (i.e., the commutator $[F,M_Z]$) is in the ideal $\Lc_{p,\infty}$.
+%     \end{lemma}
+%     Hence, the operator $M_{f\circ Z}|\qd Z|^p$ is in $\Lc_{1,\infty}$.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Description of the Conformal Trace Formula}
+%     \begin{theorem}
+%         Let $\varphi$ be a continous trace on $\Lc_{1,\infty}$. Then there is a constant $K(\varphi,c)$ such
+%         that for all $f \in C(J(f_c))$,
+%         \begin{equation*}
+%             \varphi(M_{f\circ Z}|\qd Z|^p) = K(\varphi,c)\int_{J(f_c)} f\,d\lambda_p
+%         \end{equation*}
+%         where $\lambda_p$ is the $p$-dimensional Hausdorff measure on $J(f_c)$.
+%         Also, there exist traces $\varphi$ such that $K(\varphi,c) > 0$.
+%     \end{theorem}
+% \end{frame}
+% % 
+% \begin{frame}\frametitle{Equivalent statement of the Conformal trace theorem}
+%     Recall that the Hausdorff measure can be characterised as the unique $f_c$-conformal measure of dimension $p$. 
+%     
+%     Let $\ell_{\varphi}$ be the linear functional:
+%     \begin{equation*}
+%         \ell_{\varphi}(g) = \varphi(M_{g\circ Z}|\qd Z|^p).
+%     \end{equation*}
+%     By the Riesz theorem, there is some measure $\nu$ such that $\ell_\varphi$ is integration against $\nu$.
+%     It therefore suffices to show the following:
+%     \begin{enumerate}
+%         \item{} For all continuous $g:J(f_c)\to \Cplx$, we have:
+%             \begin{equation*}
+%                 \ell_{\varphi}(g) = \frac{1}{2}\ell_\varphi((g\circ f_c)|f_c'|^p).
+%             \end{equation*}
+%         \item{} $\ell_{\varphi} > 0$, for at least some $\varphi$.
+%     \end{enumerate}
+% \end{frame}
+% 
+% \subsection{Non-trivality}
+% 
+% \begin{frame}\frametitle{Non-triviality (cont.)}
+%     First, we can show the ``non-triviality" component.
+%     \begin{theorem}
+%         Let $\mathcal{C}$ be a Jordan curve with finite upper and positive lower $p$-Minkowski content, and let $\zeta:\Circ\to \mathcal{C}$ be the continuous extension of a conformal equivalence of the open unit disk
+%         and the interior of $\mathcal{C}$. Then $\qd \zeta \in \Lc_{p,\infty}$, and for all dilation invariant extended limits $\omega$ such that $\omega\circ \log$ is still dilation invariant, we have:
+%         \begin{equation*}
+%             \tr_\omega(|\qd \zeta|^p) > 0.
+%         \end{equation*}
+%     \end{theorem}
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Non-triviality (cont.)}
+%     Idea of the proof:    
+%     If $\omega$ satisfies the stated conditions, then:
+%     \begin{equation*}
+%         \tr_\omega(|\qd \zeta|^p) = (\omega\circ \log)\left(t\mapsto \frac{1}{t}\tr(|\qd \zeta|^{p(1+1/t)})\right)
+%     \end{equation*}
+%     So it suffices to show that:
+%     \begin{equation*}
+%         \liminf_{s\to 0} s\cdot \tr(|\qd \zeta|^{p+s}) > 0.
+%     \end{equation*}
+% %     Which can be achieved with the integral formula:
+% 
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Non-triviality (cont.)}
+%     A theorem of Peller gives us the equivalence:
+%     \begin{equation*}
+%         \tr(|\qd \zeta|^{p+s}) \approx \int_{\mathbb{D}} |\zeta'(z)|^{p+s}(1-|z|^2)^{p+s-2}\,dzd\overline{z}.
+%     \end{equation*}
+%     According to the Koebe $1/4$-theorem,
+%     \begin{equation*}
+%         \dist(\zeta(0),\mathcal{C}) \leq |\zeta'(0)| \leq 4\dist(\zeta(0),\mathcal{C})
+%     \end{equation*}
+%     A change of coordinates yields:
+%     \begin{equation*}
+%         \frac{1}{4}(1-|z|^2)|\zeta'(z)| \leq \dist(\zeta(z),\mathcal{C}) \leq (1-|z|^2)|\zeta'(z)|
+%     \end{equation*}
+%     for all $z \in \Disc$.    
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Non-triviality (cont.)}
+%     In summary:
+%      \begin{equation*}
+%          \tr(|\qd \xi|^{p+s}) \approx \int_{\mathrm{int}\mathcal{C}} \mathrm{dist}(z,\mathcal{C})^{p+s-2}\,dzd\overline{z}.
+%      \end{equation*}
+%     The question is now reduced to a purely geometric problem concerning $\mathcal{C}$.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Non-triviality (cont.)}
+%     Split up $\mathrm{int}\mathcal{C}$ into regions:
+%     \begin{equation*}
+%         A_k = \{z \in \mathrm{int}\mathcal{C}\;:\; \dist(z,\mathcal{C}) \in [\lambda^{-k-1},\lambda^{-k})\}.
+%     \end{equation*}
+%     Then,
+%     \begin{equation*}
+%         \int_{\mathrm{int}(\mathcal{C}} \mathrm{dist}(z,\mathcal{C})^{p+s-2} \,dzd\overline{z} \geq \sum_{k\geq 0} \lambda^{-k(p+s-2)}|A_k|.
+%     \end{equation*}
+%     with $|A_k| = |S_{\lambda^{1-k}}(\mathcal{C})\cap \mathrm{int}(\mathcal{C})|-|S_{\lambda^{-k}}(\mathcal{C})\cap \mathrm{int}(\mathcal{C})| \geq B\lambda^{-k(2-p)}$
+%     for sufficiently big $\lambda$.
+%     
+%     This gives,
+%     \begin{equation*}
+%         \liminf_{s\to 0} s\cdot \tr(|\qd \zeta|^{p+s}) > 0.
+%     \end{equation*}
+% \end{frame}
+% 
+% 
+% \subsection{Proving conformality}
+% \begin{frame}\frametitle{Proving conformality}
+%     The remaining task is to show that:
+%     \begin{equation*}
+%         \ell_{\varphi}(g) = \frac{1}{2}\ell_{\varphi}((g\circ f_c)|f_c'|^p).
+%     \end{equation*}
+% 
+%     Recall that we have the B\"ottcher equation:
+%     \begin{equation*}
+%         Z(z^2) = f_c(Z(z)).
+%     \end{equation*} 
+%     Let $U$ be the partial isometry on $L_2(\Circ)$ given by $U(z^n) = z^{2n}$. Then,
+%     \begin{equation*}
+%         UM_ZU^* = M_{f_c\circ Z}.
+%     \end{equation*}
+%     we also have $U^*U = 1$ and $UU^* = P$ is the projection $P(z^n) = z^n$ if $n$ is even and $0$ if $n$ is odd.
+%     
+%     It is important that $U$ commutes with the Hilbert transform $F$.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Proving conformality (cont.)}
+%     Then,
+%     \begin{align*}
+%         \varphi(M_{g\circ Z}|\qd Z|^p) &= \varphi(U^*UM_{g\circ Z}|\qd Z|^p)\\
+%                                        &= \varphi(M_{g\circ f_c\circ Z}U|[F,M_{Z}]|^pU^*)\\
+%                                        &= \varphi(M_{g\circ Z}|[F,M_{f_c\circ Z}]|^pUU^*)\\
+%                                        &= \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^pP).
+%     \end{align*}
+%     A further argument using unitary invariance shows that:
+%     \begin{align*}
+%         \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^pP) = \frac{1}{2}\varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^p)
+%     \end{align*}
+% \end{frame}
+% 
+% 
+% \begin{frame}\label{The quantised chain rule}
+%     The following is called by Connes a ``quantised chain rule". Let $f$ be a polynomial. Then:
+%     \begin{equation*}
+%         |\qd (f\circ Z)|^p-|f'(M_Z)|^p|\qd Z|^p \in \SepPart{1}.
+%     \end{equation*}
+%     Proving the above identity is the most technically challenging part of the proof, requiring the operator integration tricks developed in the preceding talk.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{The quantised chain rule (cont.)}
+%     We have,
+%     \begin{equation*}
+%         [M_f,[F,M_Z]] = [[M_f,F],M_Z]
+%     \end{equation*}
+%     Since $f$ is a polynomial, the commutator $[M_f,F]$ is finite rank.
+%     
+%     Thus, we have:
+%     \begin{equation*}
+%         M_{z^n}[F,M_Z]M_{z^{-n}}-[F,M_Z] \in \SepPart{p}. 
+%     \end{equation*}
+%     This (highly nontrivally) implies that:
+%     \begin{equation*}
+%          |M_{z^n}[F,M_Z]M_{z^{-n}}|^p-|[F,M_Z]|^p \in \SepPart{1}.
+%     \end{equation*}
+%     Since $M_{z^n}$ is unitary, we get:
+%     \begin{equation*}
+%         [M_{z^n},|[F,M_Z]|^p] \in \SepPart{1}.
+%     \end{equation*}
+% \end{frame}
+% 
+% \begin{frame}\frametitle{The quantised chain rule (cont.)}
+%     Hence for all polynomials $f$,
+%     \begin{equation*}
+%         [M_f,|\qd Z|^p] \in \SepPart{1}.
+%     \end{equation*}
+%     An approximation argument allows us to state the above for all continuous $f$ as well.
+%     
+%     Fact: we also have $[M_f,|\qd Z|] \in \SepPart{p}$.
+%     
+%     Since $[M_{Z}^n,[F,M_Z]] \in \SepPart{p}$, we have that:
+%     \begin{equation*}
+%         [F,M_{Z}^n] \in nM_Z^{n-1}[F,M_Z]+\SepPart{p}.
+%     \end{equation*}
+% \end{frame}
+% 
+% \begin{frame}\frametitle{The quantised chain rule (cont.)}
+%     By linearity,
+%     \begin{equation*}
+%         [F,f(M_Z)] - f'(M_Z)[F,M_Z] \in \SepPart{p}.
+%     \end{equation*}
+%     So,
+%     \begin{equation*}
+%         |[F,f(M_Z)]|^p - |f'(M_Z)[F,M_Z]|^p \in \SepPart{1}.
+%     \end{equation*}
+%     Using the identity $|AB| = ||A|B|$, and $[M_{|f'\circ Z|^{1/2}},|[F,M_Z]|] \in \SepPart{p}$ we have
+%     \begin{equation*}
+%         |\qd f\circ Z|^p - (|f'(M_Z)|^{1/2}|\qd Z||f'(M_Z)|^{1/2})^p \in \SepPart{1}.
+%     \end{equation*}
+% \end{frame}
+% 
+% \begin{frame}\frametitle{The quantised chain rule (cont.)}
+%     Using the advanced operator integration techniques from the preceding talk:
+%     \begin{equation*}
+%         |f'(M_Z)|^p|\qd Z|^p- (|f'(M_Z)|^{1/2}|\qd Z||f'(M_Z)|^{1/2})^p \in \SepPart{1}.
+%     \end{equation*}
+%     This finally gives us the quantised chain rule:
+%     \begin{equation*}
+%         |\qd (f\circ Z)|^p - |f'(M_Z)|^p|\qd Z|^p \in \SepPart{1}.
+%     \end{equation*}
+% \end{frame}
+% 
+% \begin{frame}\label{The end of the proof}
+%     The quantised chain rule gives us:
+%     \begin{equation*}
+%         \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^p) = \varphi(M_{g\circ f_c\circ Z}|f_c'(M_Z)|^p|\qd Z|^p).
+%     \end{equation*}
+%     Which is exactly what we needed.
+% \end{frame}
+% 
+% \subsection{Further directions}
+% \begin{frame}\frametitle{Further directions}
+%     \begin{itemize}
+%         \item{} What is the dependence of $K(\varphi,c)$ on $\varphi$?
+%         \item{} Can a similar result be stated for Julia set of more general polynomials (or even non-polynomials)?
+%         \item{} Can we provide a similar result for Hausdorff measures on other Jordan curves in the plane? (such as a Koch snowflake)
+%     \end{itemize}
+%     At present, very little is known.
+% \end{frame}
+% 
+% \subsection{The end.}
+% \begin{frame}
+%     Thank you for listening!
+% %     
+% %     More information on operator ideals and their traces can be found in:\\
+% %     Lord, Steven; Sukochev, Fedor; Zanin, Dmitriy {\bf Singular traces}. Theory and applications. De Gruyter Studies in Mathematics, 46. {\emph De Gruyter, Berlin}, 2013.\\
+% %     
+%     Further reading:\\
+%     Good references for Julia sets and conformal dynamics are,\\
+%     Carleson and Gamelin, \emph{ Complex Dynamics}, 1993\\
+%     Milnor, \emph{Dynamics in One Complex variable}, 2006.\\
+%     
+%     More information on the quantised calculus may be found in:\\
+%     Connes, \emph{Noncommutative geometry}, 1994.
+% \end{frame}
 
 % \begin{frame}\frametitle{Description of the conformal trace formula}
 
@@ -780,5 +845,9 @@
 %     The space $L_2(\Circ)$ of square integrable functions on $\Circ$ (with respect to the arc length measure) has a basis $\{e_n\}_{n\in \Itgr}$ given by $e_n(z) = z^n$. The Hilbert transform $F$
 %     is the linear map defined on $e_n$ by $Fe_n = \sgn(n)e_n$.
 % \end{frame}
+
+\begin{frame}
+    Thank you for listening!
+\end{frame}
 
 \end{document}
