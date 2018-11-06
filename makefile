@@ -9,3 +9,5 @@ out/$(NAME).pdf: tex/$(NAME).tex img/*
 
 clean:
 	rm -f *.aux *.log *.nav *.out *.snm *.toc
+	
+	
