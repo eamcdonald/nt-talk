@@ -8,4 +8,4 @@ out/$(NAME).pdf: tex/$(NAME).tex img/*
 	mv $(NAME).pdf out/
 
 clean:
-	rm *.aux *.log *.nav *.out *.snm *.toc
+	rm -f *.aux *.log *.nav *.out *.snm *.toc

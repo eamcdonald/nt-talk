@@ -11,17 +11,17 @@
 \author{Edward McDonald} 
 \institute{UNSW}
 
-% 
-% \AtBeginSection[]{
-%   \begin{frame}
-%   \vfill
-%   \centering
-%   \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
-%     \usebeamerfont{title}\insertsectionhead\par%
-%   \end{beamercolorbox}
-%   \vfill
-%   \end{frame}
-% }
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
  % Do not include the preceding set of commands if you prefer not to have a recurring outline displayed during your presentation.
 
 % Core sets
@@ -55,7 +55,6 @@
 \newtheorem{remark}{Remark}
 
 \begin{document}
-\section{The Conformal trace theorem}
 \begin{frame} 
 \titlepage
 \end{frame}
@@ -66,12 +65,15 @@
     (ETDS, 2017) from myself, A Connes, F Sukochev and D Zanin.
 \end{frame}
 
-\begin{frame}\frametitle{What this talk is about}
-    The conformal trace theorem:
-    \begin{equation*}
-        \varphi(f(M_Z)|\qd Z|^p) = c_{\varphi,J}\int_J f\,d\lambda_p.
-    \end{equation*}
-\end{frame}
+% \begin{frame}\frametitle{What this talk is about}
+%     The conformal trace theorem:
+%     \begin{equation*}
+%         \varphi(f(M_Z)|\qd Z|^p) = c_{\varphi,J}\int_J f\,d\lambda_p.
+%     \end{equation*}
+% \end{frame}
+
+
+\section{Part I: Conformal Dynamics}
 
 \begin{frame}\frametitle{Historical background: What is the conformal trace theorem?}
     Let $c \in \Cplx$ be small, and let $f_c(z) = z^2+c$. The Julia set $J$ of $f_c$ is the boundary of the set of points $z$ such that $\{f_c^n(z)\}_{n\geq 0}$ is bounded.\\
@@ -97,9 +99,9 @@
 \end{frame}
 
 \begin{frame}\frametitle{Background (continued)}
-    The conformal trace theorem then states that for all continuous normalised traces $\varphi$, there is a constant $C_{\varphi}$ such that:
+    The conformal trace theorem then states that for all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,p)$ such that:
     \begin{equation*}
-        c_{\varphi}\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
+        K(\varphi,p)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
     \end{equation*}
     where $p$ is the Hausdorff dimension of $J$ and $\lambda_p$ is the $p$-dimensional Hausdorff measure. Connes and Sullivan introduced this formula as a way of computing integrals with respect to the Hausdorff measure on Julia sets.
 \end{frame}
@@ -414,7 +416,85 @@
         \end{equation*}
     \end{theorem}
 \end{frame}
+\section{Part II: Quantised calculus}
 
+\begin{frame}\frametitle{Quantised Calculus: A very rapid introduction}
+    Let $H$ be a (complex, separable) Hilbert space. Let $\mathcal{B}(H)$ denote the algebra
+    of bounded operators on $H$, and let $\|\cdot\|$ denote the operator norm. Given $T \in \mathcal{B}(H)$ and $s \geq 0$, define:
+    \begin{equation*}
+        \mu(s,T) := \inf\{\|T-R\|\;:\;\mathrm{rank}(R) \leq s\}.
+    \end{equation*}
+    The function $s\mapsto \mu(s,T)$ is called the singular value function of $T$.
+\end{frame}
+
+\begin{frame}\frametitle{Operator $\mathcal{L}_p$ spaces}
+    For $p \in (0,\infty)$, the space $\mathcal{L}_p(H)$ is defined to be the set of operators $T$ such that $\{\mu(n,T)\}_{n\geq 0}$
+    is in $\ell_p$. Similarly, the space $\mathcal{L}_{p,\infty}(H)$ is the set of operators $T$ such that
+    \begin{equation*}
+        \{n^{\frac{1}{p}}\mu(n,T)\}_{n\geq 0}
+    \end{equation*}
+    is bounded. Equivalently, $\{\mu(n,T)\}_{n\geq 0} \in \ell_{p,\infty}$.
+    
+    The spaces $\mathcal{L}_p$ and $\mathcal{L}_{p,\infty}$ are ideals of $\mathcal{B}(H)$ (in the ring-theoretic sense).
+\end{frame}
+
+\begin{frame}\frametitle{Traces}
+    Let $\mathcal{E}$ be an ideal of $\mathcal{B}(H)$. A functional $\varphi:\mathcal{E}\to \Cplx$ is called a trace if it is invariant under unitary conjugation. That is,
+    for all unitary operators $U$ and $T \in \mathcal{E}$ we have
+    \begin{equation*}
+        \varphi(UTU^*) = \varphi(T).
+    \end{equation*}
+    The most well-known example is the classical trace $\tr$, which can be defined for positive operators $T \geq 0$ by
+    \begin{equation*}
+        \tr(T) = \sum_{n\geq 0} \mu(n,T) = \int_{0}^\infty \mu(s,T)\,ds.
+    \end{equation*}
+\end{frame}
+
+\begin{frame}\frametitle{Other Traces}
+    There are many more traces on ideals of $\mathcal{B}(H)$.
+    
+    For the ideal $\mathcal{L}_{1,\infty}$:
+    \begin{enumerate}
+        \item{} There exists an uncountable infinity of linearly independent non-trivial traces $\varphi$.
+        \item{} There exist traces $\varphi$ which are continuous in the sense that $|\varphi(T)| \leq C\sup_{n\geq 0} n\mu(n,T)$.
+        \item{} There exist discontinuous traces.
+        \item{} Any continuous trace can be written as a linear combination of positive traces.
+        \item{} All traces vanish on finite rank operators (They are \emph{singular}). 
+    \end{enumerate} 
+\end{frame}
+
+\begin{frame}\frametitle{Generalised limits}
+    Consider a sequence $\{a_n\}_{n\geq 0}$. If $a_n$ does not necessarily converge, there are many methods to assign a ``limit" to $a_n$. For example,
+    \begin{enumerate}
+        \item{} The ``C\`esaro limit" is $\lim_{n\to\infty} \frac{1}{n}\sum_{k=0}^{n-1} a_k$,
+        \item{} The ``Abel limit" is $\lim_{r\to 1} \sum_{k=0}^\infty r^k (a_{k+1}-a_k)$,
+        \item{} The ``zeta-function regularised limit" is $F(-1)$ where $F$ is the analytic continuation of the function $F(s) = \sum_{k\geq 0} (a_{k+1}-a_k)^{-s}$.
+    \end{enumerate}
+    There is another (entirely distinct) method, which is to use an ``extended limit" $\omega$.
+\end{frame}
+
+\begin{frame}\frametitle{Extended limits}
+    Let $\ell_\infty(\Ntrl)$ denote the vector space of bounded sequences $\{x_n\}_{n\geq 0}$. An extended limit $\omega$ is a linear functional on $\ell_\infty$ such that:
+    \begin{itemize}
+        \item{} If $x_n\geq 0$ for all $n\geq 0$, then $\omega(\{x_n\}_{n\geq 0}) \geq 0$.
+        \item{} $\omega(\{x_n\}_{n\geq 0}) = c$ if $\lim_{n\to\infty} x_n = c$ exists.
+    \end{itemize}
+    An uncountable infinity of extended limits exist.
+\end{frame}
+
+\begin{frame}\frametitle{The Dixmier trace}
+    By definition, if $T \in \Lc_{1,\infty}$ then $\mu(n,T) = O(n^{-1})$ and hence:
+    \begin{equation*}
+        \sup_{N\geq 0}\frac{1}{\log(2+N)}\sum_{j=0}^N \mu(j,T) < \infty.
+    \end{equation*}
+    The most-well known example of a trace on $\Lc_{1,\infty}$ is obtained by applying a generalised limiting procedure to the above sequence.
+    
+    Let $\omega$ be a generalised limit, and for $T \geq 0$ in $\Lc_{1,\infty}$ define:
+    \begin{equation*}
+        \tr_\omega(T) = \omega\left(\left\{\frac{\sum_{j=0}^N \mu(j,T)}{\log(2+N)}\right\}\right).
+    \end{equation*}
+    Then (the linear extension of) $\tr_\omega$ is a nontrivial trace on the ideal $\Lc_{1,\infty}$.
+\end{frame}
 
 \begin{frame}\frametitle{The Hilbert transform}
     Let $\Circ$ be the unit circle (in the complex plane). The Hilbert space $L_2(\Circ)$ is
@@ -439,6 +519,9 @@
         \qd f := i[F,M_f].
     \end{equation*}
 \end{frame}
+
+
+\section{Part III: Description of the formula}
 
 \begin{frame}\frametitle{B\"ottcher coordinates}
     
@@ -810,32 +893,36 @@
 %     \end{equation*}
 %     Which is exactly what we needed.
 % \end{frame}
-% 
-% \subsection{Further directions}
-% \begin{frame}\frametitle{Further directions}
-%     \begin{itemize}
-%         \item{} What is the dependence of $K(\varphi,c)$ on $\varphi$?
-%         \item{} Can a similar result be stated for Julia set of more general polynomials (or even non-polynomials)?
-%         \item{} Can we provide a similar result for Hausdorff measures on other Jordan curves in the plane? (such as a Koch snowflake)
-%     \end{itemize}
-%     At present, very little is known.
-% \end{frame}
-% 
-% \subsection{The end.}
-% \begin{frame}
-%     Thank you for listening!
-% %     
-% %     More information on operator ideals and their traces can be found in:\\
-% %     Lord, Steven; Sukochev, Fedor; Zanin, Dmitriy {\bf Singular traces}. Theory and applications. De Gruyter Studies in Mathematics, 46. {\emph De Gruyter, Berlin}, 2013.\\
-% %     
-%     Further reading:\\
-%     Good references for Julia sets and conformal dynamics are,\\
-%     Carleson and Gamelin, \emph{ Complex Dynamics}, 1993\\
-%     Milnor, \emph{Dynamics in One Complex variable}, 2006.\\
+
+\subsection{Further directions}
+\begin{frame}\frametitle{Further directions}
+    For all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,p)$ such that:
+    \begin{equation*}
+        K(\varphi,p)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
+    \end{equation*}
+    \begin{itemize}
+        \item{} What is the dependence of $K(\varphi,c)$ on $\varphi$?
+        \item{} Can a similar result be stated for Julia set of more general polynomials (or even non-polynomials)?
+        \item{} Can we provide a similar result for Hausdorff measures on other Jordan curves in the plane? (such as a Koch snowflake)
+    \end{itemize}
+    At present, very little is known.
+\end{frame}
+
+\subsection{The end.}
+\begin{frame}
+    Thank you for listening!
 %     
-%     More information on the quantised calculus may be found in:\\
-%     Connes, \emph{Noncommutative geometry}, 1994.
-% \end{frame}
+%     More information on operator ideals and their traces can be found in:\\
+%     Lord, Steven; Sukochev, Fedor; Zanin, Dmitriy {\bf Singular traces}. Theory and applications. De Gruyter Studies in Mathematics, 46. {\emph De Gruyter, Berlin}, 2013.\\
+%     
+    Further reading:\\
+    Good references for Julia sets and conformal dynamics are,\\
+    Carleson and Gamelin, \emph{ Complex Dynamics}, 1993\\
+    Milnor, \emph{Dynamics in One Complex variable}, 2006.\\
+    
+    More information on the quantised calculus may be found in:\\
+    Connes, \emph{Noncommutative geometry}, 1994.
+\end{frame}
 
 % \begin{frame}\frametitle{Description of the conformal trace formula}
 
@@ -846,8 +933,5 @@
 %     is the linear map defined on $e_n$ by $Fe_n = \sgn(n)e_n$.
 % \end{frame}
 
-\begin{frame}
-    Thank you for listening!
-\end{frame}
 
 \end{document}
