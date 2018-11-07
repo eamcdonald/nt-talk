@@ -7,7 +7,7 @@
 
 \theoremstyle{definition} % See Lesson Three of the LaTeX Manual for more on this kind of "proclamation."
 
-\title{The Hausdorff measure of Julia sets from singular traces}
+\title{Operator Theory and Julia sets}
 \author{Edward McDonald} 
 \institute{UNSW}
 
@@ -99,9 +99,9 @@
 \end{frame}
 
 \begin{frame}\frametitle{Background (continued)}
-    The conformal trace theorem then states that for all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,p)$ such that:
+    The conformal trace theorem then states that for all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,J)$ such that:
     \begin{equation*}
-        K(\varphi,p)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
+        K(\varphi,J)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
     \end{equation*}
     where $p$ is the Hausdorff dimension of $J$ and $\lambda_p$ is the $p$-dimensional Hausdorff measure. Connes and Sullivan introduced this formula as a way of computing integrals with respect to the Hausdorff measure on Julia sets.
 \end{frame}
@@ -299,10 +299,10 @@
     \begin{theorem}
         The Julia set $J(f_c)$ of $f_c$ is a Jordan curve (i.e. homeomorphic to a circle) if and only if $c$ is in the main cardioid $M_0$.
     \end{theorem}
-    \begin{proof}[Very rough outline of the proof:]
-        The connected components of $\Cplx\setminus J(f_c)$ correspond to the attracting basin of the fixed points of $f_c$. For $c \in M_0$,
-        there are exactly two attracting fixed points (one of them at infinity). 
-    \end{proof}
+%     \begin{proof}[Very rough outline of the proof:]
+%         The connected components of $\Cplx\setminus J(f_c)$ correspond to the attracting basin of the fixed points of $f_c$. For $c \in M_0$,
+%         there are exactly two attracting fixed points (one of them at infinity). 
+%     \end{proof}
 \end{frame}
 
 % \begin{frame}\frametitle{Mandelbrot and Julia sets}
@@ -420,9 +420,9 @@
 
 \begin{frame}\frametitle{Quantised Calculus: A very rapid introduction}
     Let $H$ be a (complex, separable) Hilbert space. Let $\mathcal{B}(H)$ denote the algebra
-    of bounded operators on $H$, and let $\|\cdot\|$ denote the operator norm. Given $T \in \mathcal{B}(H)$ and $s \geq 0$, define:
+    of bounded operators on $H$, and let $\|\cdot\|$ denote the operator norm. Given $T \in \mathcal{B}(H)$ and $n \geq 0$, define:
     \begin{equation*}
-        \mu(s,T) := \inf\{\|T-R\|\;:\;\mathrm{rank}(R) \leq s\}.
+        \mu(n,T) := \inf\{\|T-R\|\;:\;\mathrm{rank}(R) \leq n\}.
     \end{equation*}
     The function $s\mapsto \mu(s,T)$ is called the singular value function of $T$.
 \end{frame}
@@ -450,19 +450,6 @@
     \end{equation*}
 \end{frame}
 
-\begin{frame}\frametitle{Other Traces}
-    There are many more traces on ideals of $\mathcal{B}(H)$.
-    
-    For the ideal $\mathcal{L}_{1,\infty}$:
-    \begin{enumerate}
-        \item{} There exists an uncountable infinity of linearly independent non-trivial traces $\varphi$.
-        \item{} There exist traces $\varphi$ which are continuous in the sense that $|\varphi(T)| \leq C\sup_{n\geq 0} n\mu(n,T)$.
-        \item{} There exist discontinuous traces.
-        \item{} Any continuous trace can be written as a linear combination of positive traces.
-        \item{} All traces vanish on finite rank operators (They are \emph{singular}). 
-    \end{enumerate} 
-\end{frame}
-
 \begin{frame}\frametitle{Generalised limits}
     Consider a sequence $\{a_n\}_{n\geq 0}$. If $a_n$ does not necessarily converge, there are many methods to assign a ``limit" to $a_n$. For example,
     \begin{enumerate}
@@ -474,7 +461,7 @@
 \end{frame}
 
 \begin{frame}\frametitle{Extended limits}
-    Let $\ell_\infty(\Ntrl)$ denote the vector space of bounded sequences $\{x_n\}_{n\geq 0}$. An extended limit $\omega$ is a linear functional on $\ell_\infty$ such that:
+    Let $\ell_\infty(\Ntrl)$ denote the vector space of bounded sequences $\{x_n\}_{n\geq 0}$. An extended limit $\omega$ is a linear functional on $\ell_\infty(\Ntrl)$ such that:
     \begin{itemize}
         \item{} If $x_n\geq 0$ for all $n\geq 0$, then $\omega(\{x_n\}_{n\geq 0}) \geq 0$.
         \item{} $\omega(\{x_n\}_{n\geq 0}) = c$ if $\lim_{n\to\infty} x_n = c$ exists.
@@ -494,6 +481,19 @@
         \tr_\omega(T) = \omega\left(\left\{\frac{\sum_{j=0}^N \mu(j,T)}{\log(2+N)}\right\}\right).
     \end{equation*}
     Then (the linear extension of) $\tr_\omega$ is a nontrivial trace on the ideal $\Lc_{1,\infty}$.
+\end{frame}
+
+\begin{frame}\frametitle{Other Traces}
+    There are many more traces on ideals of $\mathcal{B}(H)$.
+    
+    For the ideal $\mathcal{L}_{1,\infty}$:
+    \begin{enumerate}
+        \item{} There exists an uncountable infinity of linearly independent non-trivial traces $\varphi$.
+        \item{} There exist traces $\varphi$ which are continuous in the sense that $|\varphi(T)| \leq C\sup_{n\geq 0} n\mu(n,T)$.
+        \item{} There exist discontinuous traces.
+        \item{} Any continuous trace can be written as a linear combination of positive traces.
+        \item{} All traces vanish on finite rank operators (they are \emph{singular}). 
+    \end{enumerate} 
 \end{frame}
 
 \begin{frame}\frametitle{The Hilbert transform}
@@ -895,9 +895,9 @@
 
 \subsection{Further directions}
 \begin{frame}\frametitle{Further directions}
-    For all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,p)$ such that:
+    For all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,c)$ such that:
     \begin{equation*}
-        K(\varphi,p)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
+        K(\varphi,c)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
     \end{equation*}
     \begin{itemize}
         \item{} What is the dependence of $K(\varphi,c)$ on $\varphi$?
