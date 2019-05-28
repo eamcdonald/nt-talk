@@ -8,7 +8,7 @@
 \theoremstyle{definition} % See Lesson Three of the LaTeX Manual for more on this kind of "proclamation."
 
 \title{Operator Theory and Julia sets}
-\author{Edward McDonald} 
+\author{Fedor Sukochev} 
 \institute{UNSW}
 
 
@@ -109,7 +109,7 @@
 \begin{frame}\frametitle{Background (continued)}
     Despite being announced as early as 1994, Connes and Sullivan's proof of the conformal trace theorem was never published.
     
-    In our paper we provided a new proof, using operator integration techniques which did not exist in 1994.
+    In our 2017 paper we provided a new proof, using operator integration techniques which did not exist in 1994.
 \end{frame}
 
 % \begin{frame}\frametitle{Background (end)}
@@ -124,11 +124,11 @@
 %     \end{equation*}
 %     but ``taking a power $p$" is highly nontrivial.
 % \end{frame}
-
+% 
 
 % \section{Part I: Basic conformal dynamics}
 
-\subsection{Julia sets}
+% \subsection{Julia sets}
 % \begin{frame}\frametitle{Context: Dynamical systems}
 %     Let $X$ be a set and let $f:X\to X$. Iteration of the function $f$ defines
 %     an \emph{iterated function system}. Let $z_0 \in X$, and define
@@ -140,9 +140,9 @@
 %     is an enormous literature on this theme.
 % \end{frame}
 
-\begin{frame}\frametitle{Complex polynomial dynamics}
+\begin{frame}\frametitle{Julia sets of polynomials}
     Let $f$ be a polynomial with complex coefficients, and take
-    $z_0 \in \Cplx$. consider the recursive sequence:
+    $z_0 \in \Cplx$. Consider the recursive sequence:
     \begin{equation*}
         z_{n+1} := f(z_n)\,\quad n\geq 0.
     \end{equation*}
@@ -153,39 +153,39 @@
         \item{} $\{z_n\}_{n\geq 0}$ remains bounded.
     \end{enumerate}
 \end{frame}
-
-\begin{frame}\frametitle{Complex polynomial dynamics}
-    The simplest nontrivial example is $f(z) = z^2$. Then $z_k = f^k(z_0) = {z_0}^{2^k}$, and the behaviour
-    of $f^{k}(z_0)$ neatly splits into three separate cases:
-    \begin{enumerate}
-        \item{} If $|z_0| < 1$, then $f^k(z_0)\to 0$ as $k\to\infty$.
-        \item{} If $|z_0| = 1$, then $|f^k(z_0)| = 1$ for all $k\geq 0$.
-        \item{} If $|z_0| > 1$, then $|f^k(z_0)| \to \infty$ as $k\to\infty$.
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}\frametitle{Complex polynomial dynamics}
-    Pictorially,    
-    \begin{center}
-    \includegraphics[width=50mm]{img/circle-filled.png}
-    \end{center}
-    Here, the set of $z_0$ such that $z_n$ remains bounded is coloured in blue. The set of $z_0$ such that $z_n$ is 
-    unbounded is white. The boundary of the blue set is highlighted to make it easier to see.
-\end{frame}
-
-\begin{frame}\frametitle{Complex polynomial dynamics}
-    What if we perturb the polynomial $f(z)=z^2$ slightly? Consider $f(z) = z^2+0.1+0.1i$. 
-    
-    It is not feasible to determine analytically the behaviour of $\{f^n(z)\}_{n\geq 0}$.
-    Instead we use a computer: On a large grid of complex numbers, colour each point $z$
-    blue if $f^N(z) < 10$ for some suitably large number $N$.
-    
-    The result looks like this:
-    \begin{center}
-        \includegraphics[width=50mm]{img/julia0101-filled.png}
-    \end{center}
-    Again, the boundary has been highlighted.
-\end{frame}
+% 
+% \begin{frame}\frametitle{Complex polynomial dynamics}
+%     The simplest nontrivial example is $f(z) = z^2$. Then $z_k = f^k(z_0) = {z_0}^{2^k}$, and the behaviour
+%     of $f^{k}(z_0)$ neatly splits into three separate cases:
+%     \begin{enumerate}
+%         \item{} If $|z_0| < 1$, then $f^k(z_0)\to 0$ as $k\to\infty$.
+%         \item{} If $|z_0| = 1$, then $|f^k(z_0)| = 1$ for all $k\geq 0$.
+%         \item{} If $|z_0| > 1$, then $|f^k(z_0)| \to \infty$ as $k\to\infty$.
+%     \end{enumerate}
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Complex polynomial dynamics}
+%     Pictorially,    
+%     \begin{center}
+%     \includegraphics[width=50mm]{img/circle-filled.png}
+%     \end{center}
+%     Here, the set of $z_0$ such that $z_n$ remains bounded is coloured in blue. The set of $z_0$ such that $z_n$ is 
+%     unbounded is white. The boundary of the blue set is highlighted to make it easier to see.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Complex polynomial dynamics}
+%     What if we perturb the polynomial $f(z)=z^2$ slightly? Consider $f(z) = z^2+0.1+0.1i$. 
+%     
+%     It is not feasible to determine analytically the behaviour of $\{f^n(z)\}_{n\geq 0}$.
+%     Instead we use a computer: On a large grid of complex numbers, colour each point $z$
+%     blue if $f^N(z) < 10$ for some suitably large number $N$.
+%     
+%     The result looks like this:
+%     \begin{center}
+%         \includegraphics[width=50mm]{img/julia0101-filled.png}
+%     \end{center}
+%     Again, the boundary has been highlighted.
+% \end{frame}
 
 \begin{frame}\frametitle{Complex polynomial dynamics}
     Try $f(z) = z^2+0.1-0.2i$,\\
@@ -215,13 +215,6 @@
     \end{center}
 \end{frame}
 
-\begin{frame}\frametitle{Complex polynomial dynamics}
-    Let try a slightly bigger parameter. Consider $f(z) = z^2+0.5+0.5i$,
-    \begin{center}
-        \includegraphics[width=50mm]{img/julia0505.png}
-    \end{center}
-\end{frame}
-
 \begin{frame}\frametitle{The Mandelbrot set}
     What is going on here?
     Consider the general polynomial:
@@ -240,13 +233,13 @@
         \includegraphics[width=60mm]{img/mandelbrot.png}
     \end{center}
 \end{frame}
-
-\begin{frame}\frametitle{The Mandelbrot set}
-    A more informative image is this one:
-    \begin{center}
-        \includegraphics[width=60mm]{img/mandelbrot-with-captions.png}
-    \end{center}
-\end{frame}
+% 
+% \begin{frame}\frametitle{The Mandelbrot set}
+%     A more informative image is this one:
+%     \begin{center}
+%         \includegraphics[width=60mm]{img/mandelbrot-with-captions.png}
+%     \end{center}
+% \end{frame}
 
 \begin{frame}\frametitle{The Julia set}
     Let $c \in \Cplx$, and consider $f_c(z) = z^2+c$. The \emph{Julia set} of $f_c$ is the boundary
@@ -256,37 +249,37 @@
     \end{theorem}
     (some authors take this as the definition of $M$)
 \end{frame}
-
-\begin{frame}\frametitle{Fixed points}
-    The asymptotic behaviour of $\{f^n(z_0)\}_{n\geq 0}$ is best understood by examining the fixed points ($f(z) = z$) of $f$.
-    
-    A fixed point $\lambda$ is said to be:
-    \begin{enumerate}
-        \item{} Attracting if $|f'(\lambda)| < 1$,
-        \item{} Repelling if $|f'(\lambda)| > 1$,
-        \item{} Neutral if $|f'(\lambda)| = 1$.
-    \end{enumerate}
-    An attracting fixed point $\lambda$ are called \emph{super-attracting} if $f'(\lambda) = 0$.
-\end{frame}
-
-\begin{frame}\frametitle{Fixed points (cont.)}
-    The behaviour of $\{f^n(z)\}_{n\geq 0}$ near an attracting fixed point is easily described:
-    
-    
-    If $z$ is sufficiently close to an attracting fixed point $\lambda$, then $f^n(z)\to \lambda$ exponentially fast.
-    
-    If $\lambda$ is superattracting, then $f^n(z)\to \lambda$ super-exponentially fast.
-        
-        
-    The set of all $z$ such that $f^n(z)\to  \lambda$ as $n\to\infty$ is called the attracting basin of $\lambda$.
-    It is easy to see that an attracting basin is open.
-\end{frame}
+% 
+% \begin{frame}\frametitle{Fixed points}
+%     The asymptotic behaviour of $\{f^n(z_0)\}_{n\geq 0}$ is best understood by examining the fixed points ($f(z) = z$) of $f$.
+%     
+%     A fixed point $\lambda$ is said to be:
+%     \begin{enumerate}
+%         \item{} Attracting if $|f'(\lambda)| < 1$,
+%         \item{} Repelling if $|f'(\lambda)| > 1$,
+%         \item{} Neutral if $|f'(\lambda)| = 1$.
+%     \end{enumerate}
+% %     An attracting fixed point $\lambda$ are called \emph{super-attracting} if $f'(\lambda) = 0$.
+% \end{frame}
+% 
+% \begin{frame}\frametitle{Fixed points (cont.)}
+%     The behaviour of $\{f^n(z)\}_{n\geq 0}$ near an attracting fixed point is easily described:
+%     
+%     
+%     If $z$ is sufficiently close to an attracting fixed point $\lambda$, then $f^n(z)\to \lambda$ exponentially fast.
+%     
+%     If $\lambda$ is superattracting, then $f^n(z)\to \lambda$ super-exponentially fast.
+%         
+%         
+%     The set of all $z$ such that $f^n(z)\to  \lambda$ as $n\to\infty$ is called the attracting basin of $\lambda$.
+%     It is easy to see that an attracting basin is open.
+% \end{frame}
 
 \begin{frame}\frametitle{The main cardioid}
     When does $f(z) = z^2+c$ have an attracting fixed point? Solve for $c$:
     $z^2-z+c = 0$, $|2z| < 1$.
     
-    Let $M_0$ be the set $\{\frac{z}{2}(1-\frac{z}{2})\;:\;|z|<1\}$. $M_0$ is 
+    The solution is $c \in M_0 := \{\frac{z}{2}(1-\frac{z}{2})\;:\;|z|<1\}$. $M_0$ is 
     an open subset of the Mandelbrot set $M$ called the \emph{main cardioid}, shown below in red:
     \begin{center}
         \includegraphics[width=60mm]{img/main-cardioid.png}
@@ -357,20 +350,6 @@
     \begin{equation*}
         \nu(f(U)) = \int_{U} |f'|^p\,d\nu.
     \end{equation*}
-    
-    
-    
-
-
-%     Associated to the Hausdorff dimension $p$ there is a $p$-dimensional Hausdorff measure $\lambda_p$. In many cases, 
-%     the Hausdorff measure of a ball of radius $r$ scales like $r^p$,
-%     \begin{equation*}
-%         cr^p \leq \lambda_p(B(z,r)) \leq Cr^p
-%     \end{equation*}
-%     for some fixed $c,C$ and all $r > 0$.
-%     
-%     Fact: If $c \in M_0$, and $p$ is the Hausdorff dimension of $J(f_c)$, then the Hausdorff measure $\lambda_p$ on $J(f_c)$
-%     is uniquely specified by the above identity. This may not be true for Hausdorff measures in general.
 \end{frame}
 
 \begin{frame}\frametitle{Characterising the Hausdorff measure}
@@ -416,6 +395,8 @@
         \end{equation*}
     \end{theorem}
 \end{frame}
+
+
 \section{Part II: Quantised calculus}
 
 \begin{frame}\frametitle{Quantised Calculus: A very rapid introduction}
@@ -448,17 +429,18 @@
     \begin{equation*}
         \tr(T) = \sum_{n\geq 0} \mu(n,T) = \int_{0}^\infty \mu(s,T)\,ds.
     \end{equation*}
+    The ideal $\Lc_{1,\infty}$ admits exotic traces, the most well-known of which are Dixmier traces.
 \end{frame}
 
-\begin{frame}\frametitle{Generalised limits}
-    Consider a sequence $\{a_n\}_{n\geq 0}$. If $a_n$ does not necessarily converge, there are many methods to assign a ``limit" to $a_n$. For example,
-    \begin{enumerate}
-        \item{} The ``C\`esaro limit" is $\lim_{n\to\infty} \frac{1}{n}\sum_{k=0}^{n-1} a_k$,
-        \item{} The ``Abel limit" is $\lim_{r\to 1} \sum_{k=0}^\infty r^k (a_{k+1}-a_k)$,
-        \item{} The ``zeta-function regularised limit" is $F(-1)$ where $F$ is the analytic continuation of the function $F(s) = \sum_{k\geq 0} (a_{k+1}-a_k)^{-s}$.
-    \end{enumerate}
-    There is another (entirely distinct) method, which is to use an ``extended limit" $\omega$.
-\end{frame}
+% \begin{frame}\frametitle{Generalised limits}
+%     Consider a sequence $\{a_n\}_{n\geq 0}$. If $a_n$ does not necessarily converge, there are many methods to assign a ``limit" to $a_n$. For example,
+%     \begin{enumerate}
+%         \item{} The ``C\`esaro limit" is $\lim_{n\to\infty} \frac{1}{n}\sum_{k=0}^{n-1} a_k$,
+%         \item{} The ``Abel limit" is $\lim_{r\to 1} \sum_{k=0}^\infty r^k (a_{k+1}-a_k)$,
+%         \item{} The ``zeta-function regularised limit" is $F(-1)$ where $F$ is the analytic continuation of the function $F(s) = \sum_{k\geq 0} (a_{k+1}-a_k)^{-s}$.
+%     \end{enumerate}
+%     There is another (entirely distinct) method, which is to use an ``extended limit" $\omega$.
+% \end{frame}
 
 \begin{frame}\frametitle{Extended limits}
     Let $\ell_\infty(\Ntrl)$ denote the vector space of bounded sequences $\{x_n\}_{n\geq 0}$. An extended limit $\omega$ is a linear functional on $\ell_\infty(\Ntrl)$ such that:
@@ -505,6 +487,7 @@
         e_n(z) = z^n,\quad n\in \Itgr, z \in \Circ.
     \end{equation*}
     The Hilbert trasform $F$ is defined on the basis $e_n$ by $Fe_n = \sgn(n)e_n$.
+    
     
     For a bounded function $f$ on $\Circ$, let $M_f$ be the operator $M_f\xi(z) = f(z)\xi(z)$ (pointwise multiplication).
 \end{frame}
@@ -557,17 +540,26 @@
     Hence, the operator $M_{f\circ Z}|\qd Z|^p$ is in $\Lc_{1,\infty}$.
 \end{frame}
 
-\begin{frame}\frametitle{Outline of the proof}
-    Let $\varphi$ be a continuous normalised trace on $\Lc_{1,\infty}$. Define the linear functional:
+\begin{frame}\frametitle{Statement of the Theorem}
+    For all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,c)$ such that:
     \begin{equation*}
-        \ell(g) = \varphi(g(M_Z)|\qd Z|^p).
+        K(\varphi,c)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
     \end{equation*}
-    Then all that we need to show is:
-    \begin{itemize}
-        \item{} $\ell(1) \neq 0$ for at least some trace $\varphi$,
-        \item{} $\ell(g) = \frac{1}{2}\ell((g\circ f_c)|f_c'|^p)$.
-    \end{itemize}
+    Moreover, for at least some trace $\phi$ we have $K(\varphi,c)$.
 \end{frame}
+% 
+% \begin{frame}\frametitle{Outline of the proof}
+%     Let $\varphi$ be a continuous normalised trace on $\Lc_{1,\infty}$. Define the linear functional:
+%     \begin{equation*}
+%         \ell(g) = \varphi(g(M_Z)|\qd Z|^p).
+%     \end{equation*}
+%     Then all that we need to show is:
+%     \begin{itemize}
+%         \item{} $\ell(1) \neq 0$ for at least some trace $\varphi$,
+%         \item{} $\ell(g) = \frac{1}{2}\ell((g\circ f_c)|f_c'|^p)$.
+%     \end{itemize}
+% \end{frame}
+
 
 % \begin{frame}\frametitle{Quantised Calculus: A very rapid introduction}
 %     Let $H$ be a (complex, separable) Hilbert space. Let $\mathcal{B}(H)$ denote the algebra
@@ -692,23 +684,23 @@
 %     \end{theorem}
 % \end{frame}
 % % 
-% \begin{frame}\frametitle{Equivalent statement of the Conformal trace theorem}
-%     Recall that the Hausdorff measure can be characterised as the unique $f_c$-conformal measure of dimension $p$. 
-%     
-%     Let $\ell_{\varphi}$ be the linear functional:
-%     \begin{equation*}
-%         \ell_{\varphi}(g) = \varphi(M_{g\circ Z}|\qd Z|^p).
-%     \end{equation*}
-%     By the Riesz theorem, there is some measure $\nu$ such that $\ell_\varphi$ is integration against $\nu$.
-%     It therefore suffices to show the following:
-%     \begin{enumerate}
-%         \item{} For all continuous $g:J(f_c)\to \Cplx$, we have:
-%             \begin{equation*}
-%                 \ell_{\varphi}(g) = \frac{1}{2}\ell_\varphi((g\circ f_c)|f_c'|^p).
-%             \end{equation*}
-%         \item{} $\ell_{\varphi} > 0$, for at least some $\varphi$.
-%     \end{enumerate}
-% \end{frame}
+\begin{frame}\frametitle{Equivalent statement of the Conformal trace theorem}
+    Recall that the Hausdorff measure can be characterised as the unique $f_c$-conformal measure of dimension $p$. 
+    
+    Let $\ell_{\varphi}$ be the linear functional:
+    \begin{equation*}
+        \ell_{\varphi}(g) = \varphi(M_{g\circ Z}|\qd Z|^p).
+    \end{equation*}
+    By the Riesz theorem, there is some measure $\nu$ such that $\ell_\varphi$ is integration against $\nu$.
+    It therefore suffices to show the following:
+    \begin{enumerate}
+        \item{} For all continuous $g:J(f_c)\to \Cplx$, we have:
+            \begin{equation*}
+                \ell_{\varphi}(g) = \frac{1}{2}\ell_\varphi((g\circ f_c)|f_c'|^p).
+            \end{equation*}
+        \item{} $\ell_{\varphi} > 0$, for at least some $\varphi$.
+    \end{enumerate}
+\end{frame}
 % 
 % \subsection{Non-trivality}
 % 
@@ -781,8 +773,8 @@
 % 
 % 
 % \subsection{Proving conformality}
-% \begin{frame}\frametitle{Proving conformality}
-%     The remaining task is to show that:
+% \begin{frame}\frametitle{Idea of the proof}
+%     The main task is to show that we have:
 %     \begin{equation*}
 %         \ell_{\varphi}(g) = \frac{1}{2}\ell_{\varphi}((g\circ f_c)|f_c'|^p).
 %     \end{equation*}
@@ -813,14 +805,14 @@
 %         \varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^pP) = \frac{1}{2}\varphi(M_{g\circ f_c\circ Z}|\qd (f_c\circ Z)|^p)
 %     \end{align*}
 % \end{frame}
-% 
+% % 
 % 
 % \begin{frame}\label{The quantised chain rule}
 %     The following is called by Connes a ``quantised chain rule". Let $f$ be a polynomial. Then:
 %     \begin{equation*}
 %         |\qd (f\circ Z)|^p-|f'(M_Z)|^p|\qd Z|^p \in \SepPart{1}.
 %     \end{equation*}
-%     Proving the above identity is the most technically challenging part of the proof, requiring the operator integration tricks developed in the preceding talk.
+%     Proving the above identity is the most technically challenging part of the proof, requiring a subtle operator integration argument.
 % \end{frame}
 % 
 % \begin{frame}\frametitle{The quantised chain rule (cont.)}
@@ -895,7 +887,7 @@
 
 \subsection{Further directions}
 \begin{frame}\frametitle{Further directions}
-    For all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,c)$ such that:
+    So far we have the formula:
     \begin{equation*}
         K(\varphi,c)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
     \end{equation*}
@@ -904,16 +896,16 @@
         \item{} Can a similar result be stated for Julia set of more general polynomials (or even non-polynomials)?
         \item{} Can we provide a similar result for Hausdorff measures on other Jordan curves in the plane? (such as a Koch snowflake)
     \end{itemize}
-    At present, very little is known.
+    At present, although the proof extends without difficulty to a slightly wider class of polynomials.
 \end{frame}
 
 \subsection{The end.}
 \begin{frame}
     Thank you for listening!
-%     
-%     More information on operator ideals and their traces can be found in:\\
-%     Lord, Steven; Sukochev, Fedor; Zanin, Dmitriy {\bf Singular traces}. Theory and applications. De Gruyter Studies in Mathematics, 46. {\emph De Gruyter, Berlin}, 2013.\\
-%     
+    
+    More information on operator ideals and their traces can be found in:\\
+    Lord, Steven; Sukochev, Fedor; Zanin, Dmitriy {\bf Singular traces}. Theory and applications. De Gruyter Studies in Mathematics, 46. {\emph De Gruyter, Berlin}, 2013.\\
+    
     Further reading:\\
     Good references for Julia sets and conformal dynamics are,\\
     Carleson and Gamelin, \emph{ Complex Dynamics}, 1993\\
