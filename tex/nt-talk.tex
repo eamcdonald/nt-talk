@@ -60,9 +60,9 @@
 \end{frame}
 
 \begin{frame}\frametitle{What is this talk?}
-    This talk concerns the paper, 
+    This talk concerns the paper
     \emph{ The conformal trace theorem for Julia sets of quadratic polynomials}
-    (ETDS, 2017) from myself, A Connes, F Sukochev and D Zanin.
+    (ETDS, 2017) from A. Connes, E. McDonald, myself and D. Zanin.
 \end{frame}
 
 % \begin{frame}\frametitle{What this talk is about}
@@ -79,11 +79,12 @@
     Let $c \in \Cplx$ be small, and let $f_c(z) = z^2+c$. The Julia set $J$ of $f_c$ is the boundary of the set of points $z$ such that $\{f_c^n(z)\}_{n\geq 0}$ is bounded.\\
     When $c \approx 0$, $J$ is a Jordan curve:\\
     \includegraphics[width=60mm]{img/julia-07001-filled.png}\\
-    If $c \neq 0$ then this is non-smooth and a kind of fractal.
+    ($J$ is the dark blue boundary)
+    If $c \neq 0$ then $J$ is non-smooth and a kind of fractal.
 \end{frame}
 
 \begin{frame}\frametitle{Background (continued)}
-    In 1994 in his book {\it Noncommutative Geometry}, A. Connes introduced a formula for the Hausdorff measure of a Julia set in terms of his quantised calculus:
+    In 1994 in his book {\it Noncommutative Geometry}, A. Connes introduced a formula for the Hausdorff measure of a Julia set in terms of his quantised calculus
     \begin{center}
     \includegraphics[width=30mm]{img/ncg-book-cover.jpg}
     \end{center}
@@ -146,10 +147,10 @@
     \begin{equation*}
         z_{n+1} := f(z_n)\,\quad n\geq 0.
     \end{equation*}
-    We are especially interested in studying the asymptotic behaviour of $\{z_n\}_{n\geq 0}$
+    We are interested in studying the asymptotic behaviour of $\{z_n\}_{n\geq 0}$
     for different choices of $z_0 \in \Cplx$. In particular, since $f$ is a polynomial, exactly one of the following happens:
     \begin{enumerate}
-        \item{} Either $|z_n| \to\infty$.
+        \item{} Either $|z_n| \to\infty$, or
         \item{} $\{z_n\}_{n\geq 0}$ remains bounded.
     \end{enumerate}
 \end{frame}
@@ -173,19 +174,19 @@
 %     unbounded is white. The boundary of the blue set is highlighted to make it easier to see.
 % \end{frame}
 % 
-% \begin{frame}\frametitle{Complex polynomial dynamics}
-%     What if we perturb the polynomial $f(z)=z^2$ slightly? Consider $f(z) = z^2+0.1+0.1i$. 
-%     
-%     It is not feasible to determine analytically the behaviour of $\{f^n(z)\}_{n\geq 0}$.
-%     Instead we use a computer: On a large grid of complex numbers, colour each point $z$
-%     blue if $f^N(z) < 10$ for some suitably large number $N$.
-%     
-%     The result looks like this:
-%     \begin{center}
-%         \includegraphics[width=50mm]{img/julia0101-filled.png}
-%     \end{center}
-%     Again, the boundary has been highlighted.
-% \end{frame}
+\begin{frame}\frametitle{Complex polynomial dynamics}
+    Consider $f(z) = z^2+0.1+0.1i$. 
+    
+    It is not feasible to determine analytically the behaviour of $\{f^n(z)\}_{n\geq 0}$.
+    Instead we use a computer: On a large grid of complex numbers, colour each point $z$
+    blue if $|f^N(z)| < 10$ for some suitably large number $N$.
+    
+    The result looks like this:
+    \begin{center}
+        \includegraphics[width=50mm]{img/julia0101-filled.png}
+    \end{center}
+    Again, the boundary has been highlighted.
+\end{frame}
 
 \begin{frame}\frametitle{Complex polynomial dynamics}
     Try $f(z) = z^2+0.1-0.2i$,\\
@@ -242,7 +243,7 @@
 % \end{frame}
 
 \begin{frame}\frametitle{The Julia set}
-    Let $c \in \Cplx$, and consider $f_c(z) = z^2+c$. The \emph{Julia set} of $f_c$ is the boundary
+    Let $c \in \Cplx$, and consider $f_c(z) = z^2+c$. The \emph{Julia set} of $f_c$ (denoted $J(f_c)$) is the boundary
     of the set of points $z \in \Cplx$ such that $\{f_c^n(z)\}_{n\geq 0}$ is bounded.
     \begin{theorem}[Mandelbrot]
         The Julia set $J(f_c)$ is connected if and only if $c \in M$ (the Mandelbrot set).
@@ -276,15 +277,15 @@
 % \end{frame}
 
 \begin{frame}\frametitle{The main cardioid}
-    When does $f(z) = z^2+c$ have an attracting fixed point? Solve for $c$:
-    $z^2-z+c = 0$, $|2z| < 1$.
+%     When does $f(z) = z^2+c$ have an attracting fixed point? Solve for $c$:
+%     $z^2-z+c = 0$, $|2z| < 1$.
     
-    The solution is $c \in M_0 := \{\frac{z}{2}(1-\frac{z}{2})\;:\;|z|<1\}$. $M_0$ is 
+    Define $M_0 := \{\frac{z}{2}(1-\frac{z}{2})\;:\;|z|<1\}$. $M_0$ is 
     an open subset of the Mandelbrot set $M$ called the \emph{main cardioid}, shown below in red:
     \begin{center}
         \includegraphics[width=60mm]{img/main-cardioid.png}
     \end{center}
-    By definition, if $c \in M_0$ then $f_c$ has an attracting fixed point.
+%     By definition, if $c \in M_0$ then $f_c$ has an attracting fixed point.
 \end{frame}
 
 \begin{frame}\frametitle{The main cardioid}
@@ -383,16 +384,17 @@
 % \end{frame}
 
 \begin{frame}\frametitle{The main task of the paper}
-    By the Riesz representation theorem, we have the following:
+    By the Riesz representation theorem (and some additional argument), we have the following:
     \begin{theorem}
         Let $\ell$ be a bounded linear functional on the space $C(J)$. If:
         \begin{equation*}
             \ell(g) = \frac{1}{2}\ell((g\circ f_c)|f_c'|^p),\quad g \in C(J).
         \end{equation*}
-        then there is a constant $c$ such that:
+        then there is a constant $C$ such that:
         \begin{equation*}
-            \ell(g) = c\int_{J} g\,d\lambda_p.
+            \ell(g) = C\int_{J(f_c)} g\,d\lambda_p.
         \end{equation*}
+        for all continuous functions $g:J(f_c)\to \Cplx$.
     \end{theorem}
 \end{frame}
 
@@ -480,17 +482,21 @@
 
 \begin{frame}\frametitle{The Hilbert transform}
     Let $\Circ$ be the unit circle (in the complex plane). The Hilbert space $L_2(\Circ)$ is
-    defined with respect to the arc-length measure (the Haar measure).
+    defined with respect to the arc-length measure $\mathbf{m}$ (the Haar measure).
     
     There is the trigonometric orthonormal basis for $L_2(\Circ)$,
     \begin{equation*}
         e_n(z) = z^n,\quad n\in \Itgr, z \in \Circ.
     \end{equation*}
     The Hilbert trasform $F$ is defined on the basis $e_n$ by $Fe_n = \sgn(n)e_n$.
-    
+    Equivalently (up to a constant), $F$ is the singular integral operator:
+    \begin{equation*}
+        F\xi(z) = \mathrm{p.v.}\int_{\Circ} \frac{\xi(\tau)}{1-\overline{\tau}z}\,d\mathbf{m}(\tau),\quad \xi \in C^1(\Circ), z \in \Circ.
+    \end{equation*}
     
     For a bounded function $f$ on $\Circ$, let $M_f$ be the operator $M_f\xi(z) = f(z)\xi(z)$ (pointwise multiplication).
 \end{frame}
+
 
 \begin{frame}\frametitle{Quantised differentials}
     If $f$ is a bounded function on $\Circ$, then pointwise multiplication
@@ -501,6 +507,10 @@
     \begin{equation*}
         \qd f := i[F,M_f].
     \end{equation*}
+    Alternatively, (up to a constant), $\qd f$ is the operator on $L_2(\Circ)$ given by:
+    \begin{equation*}
+        (\qd f)\xi(z) = \mathrm{p.v.}\int_{\Circ} \frac{f(\tau)-f(z)}{1-\overline{\tau}z}\xi(\tau)\,d\mathbf{m}(\tau),\quad z \in \Circ.
+    \end{equation*}
 \end{frame}
 
 
@@ -510,13 +520,13 @@
     
     The following is due to L. B\"ottcher:
     \begin{theorem}
-        Let $f$ be a polynomial of degree $d \geq 2$. There exists a conformal map $Z$:
+        Let $f$ be a polynomial of degree $d \geq 2$ such that $J(f)$ is a Jordan curve. There exists a conformal map $Z$:
         \begin{equation*}
-            Z:\{|z| > 1\}\to \text{Attracting basin of }\infty.
+            Z:\{|z| > 1\}\to \text{Exterior of }J
         \end{equation*}
         such that $f(Z(z)) = Z(z^d)$, for all $|z| > 1$.
     \end{theorem}
-    If $J(f_c)$ is a Jordan curve, then Carath\'eodory's theorem implies that $Z$ has continuous extension:
+    Since $J(f_c)$ is a Jordan curve, then Carath\'eodory's theorem implies that $Z$ has continuous extension:
     \begin{equation*}
         Z:\Circ\to J(f_c)
     \end{equation*}
@@ -543,9 +553,10 @@
 \begin{frame}\frametitle{Statement of the Theorem}
     For all continuous normalised traces $\varphi$ on the ideal $\Lc_{1,\infty}$, there is a constant $K(\varphi,c)$ such that:
     \begin{equation*}
-        K(\varphi,c)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
+        K(\varphi,c)\int_{J(f_c)} g\,d\lambda_p = \varphi(M_{g\circ Z}|\qd Z|^p).
     \end{equation*}
-    Moreover, for at least some trace $\phi$ we have $K(\varphi,c)$.
+    for all $g \in C(J(f_c))$.
+    Moreover, for at least some trace $\varphi$ we have $K(\varphi,c) > 0$.
 \end{frame}
 % 
 % \begin{frame}\frametitle{Outline of the proof}
@@ -887,16 +898,22 @@
 
 \subsection{Further directions}
 \begin{frame}\frametitle{Further directions}
-    So far we have the formula:
-    \begin{equation*}
-        K(\varphi,c)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
-    \end{equation*}
+%     So far we have the formula:
+%     \begin{equation*}
+%         K(\varphi,c)\int_J f\,d\lambda_p = \varphi(M_{f\circ Z}|\qd Z|^p).
+%     \end{equation*}
     \begin{itemize}
         \item{} What is the dependence of $K(\varphi,c)$ on $\varphi$?
-        \item{} Can a similar result be stated for Julia set of more general polynomials (or even non-polynomials)?
+        \item{} Can a similar result be stated for Julia sets of more general polynomials (or even non-polynomials)?
         \item{} Can we provide a similar result for Hausdorff measures on other Jordan curves in the plane? (such as a Koch snowflake)
+    \end{itemize}  
+    
+    \pause
+    At present, we know the following:
+    \begin{itemize}
+        \item{} There is a similar formula for the Hausdorff measure of limit sets of quasi-Fuchsian groups.
+        \item{} The proof extends without difficulty to Julia sets for a slightly wider class of polynomials.
     \end{itemize}
-    At present, although the proof extends without difficulty to a slightly wider class of polynomials.
 \end{frame}
 
 \subsection{The end.}
